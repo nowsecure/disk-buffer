@@ -1,0 +1,16 @@
+{
+  "name": "disk-buffer",
+  "version": "0.0.0",
+  "description": "Disk buffer",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": "nowsecure/disk-buffer",
+  "devDependencies": {
+    "tape": "^3.5.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "stream-write": "^1.0.0"
+  }
+}
