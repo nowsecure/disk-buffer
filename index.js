@@ -48,10 +48,11 @@ DiskBuffer.prototype._open = function(){
 DiskBuffer.prototype._write = function(chunk, enc, done){
   var self = this;
   write(this._ws, chunk, function(err){
+    if (err) return done(err);
     self._bytes += Buffer.byteLength(chunk);
     self._writes++;
     self._maybeFlush();
-    done(err);
+    done();
   });
 };
 
