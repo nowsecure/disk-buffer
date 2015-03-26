@@ -36,7 +36,13 @@ DiskBuffer.prototype._reset = function(){
 
 DiskBuffer.prototype._open = function(){
   this._filePath = this._pathname();
-  this._ws = fs.createWriteStream(this._filePath);
+  var ws = this._ws = fs.createWriteStream(this._filePath);
+
+  var onerror = this.emit.bind(this, 'error');
+  ws.on('error', onerror);
+  ws.on('open', function(){
+    ws.removeListener('error', onerror);
+  });
 };
 
 DiskBuffer.prototype._write = function(chunk, enc, done){

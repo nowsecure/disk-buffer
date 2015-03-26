@@ -34,3 +34,11 @@ test('flushWrites', function(t){
   b.write('beep');
 });
 
+test('fs error', function(t){
+  var b = new DiskBuffer('/does/not/exist');
+  b.on('error', function(err){
+    t.ok(err);
+    t.end();
+  });
+});
+
