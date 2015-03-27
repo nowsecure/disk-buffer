@@ -3,6 +3,8 @@
 
   Disk buffer as a writable stream, which after `n` bytes written and/or `m` writes finishes the file, emits an event and starts writing to a new one.
 
+  [![build status](https://secure.travis-ci.org/nowsecure/disk-buffer.svg)](http://travis-ci.org/nowsecure/disk-buffer)
+
 ## Example
 
 ```js
