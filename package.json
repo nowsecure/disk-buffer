@@ -1,6 +1,6 @@
 {
   "name": "disk-buffer",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Disk buffer",
   "scripts": {
     "test": "make test"
