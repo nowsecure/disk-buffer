@@ -42,3 +42,17 @@ test('fs error', function(t){
   });
 });
 
+test('flush event', function(t){
+  var b = new DiskBuffer('/tmp/artifacts', {
+    flushBytes: 1
+  });
+
+  b.on('flush', function(flush){
+    t.ok(flush.path);
+    t.ok(flush.opened);
+    t.end();
+  });
+
+  b.write('foo');
+});
+

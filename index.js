@@ -24,6 +24,7 @@ function DiskBuffer(path, opts){
 
   this._ws = null;
   this._filePath = null;
+  this._opened = null;
 
   this._reset();
   this._open();
@@ -37,6 +38,7 @@ DiskBuffer.prototype._reset = function(){
 DiskBuffer.prototype._open = function(){
   this._filePath = this._pathname();
   var ws = this._ws = fs.createWriteStream(this._filePath);
+  this._opened = new Date;
 
   var onerror = this.emit.bind(this, 'error');
   ws.on('error', onerror);
@@ -58,7 +60,10 @@ DiskBuffer.prototype._write = function(chunk, enc, done){
 
 DiskBuffer.prototype._flush = function(){
   this._reset();
-  this.emit('flush', { path: this._filePath });
+  this.emit('flush', {
+    path: this._filePath,
+    opened: this._opened
+  });
   this._open();
 };
 

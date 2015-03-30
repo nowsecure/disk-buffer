@@ -40,6 +40,13 @@ $ npm install disk-buffer
   - `.flushBytes`: flush after this many bytes written
   - `.flushWrites`: flush after this many writes
 
+### `flush` event
+
+  For every flush, an event with the following properties is emitted:
+
+  - `path`: the file's location
+  - `opened`: a date object of the file's creation
+
 ## Kudos
 
   This is inspired by [tj/go-disk-buffer](https://github.com/tj/go-disk-buffer).
